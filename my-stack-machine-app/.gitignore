@@ -1,0 +1,14 @@
+# Dependências
+/node_modules
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+
+# Arquivos de build (se usar Vite ou Create React App)
+/build
+/dist
+
+# Arquivos .env
+.env.local
+.env.*.local

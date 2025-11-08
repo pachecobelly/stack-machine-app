@@ -1,0 +1,340 @@
+/* --- 1. Base e Configuração do Layout --- */
+
+/* Garante que a base da página ocupe 100% da altura */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* O container principal com o fundo cinza.
+   Ele deve ter no mínimo a altura da tela. */
+.app-container {
+  min-height: 100vh;
+  background-color: #f0f2f5; /* Fundo cinza claro */
+}
+
+/* O wrapper que centraliza o conteúdo e organiza o layout.
+   Ele se torna um container flex vertical. */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ocupa 100% da altura do seu pai (.app-container) */
+  
+  /* Centraliza e limita a largura do conteúdo */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* O container <main> que envolve suas seções.
+   Esta é a regra mais importante: ele "cresce" para
+   ocupar todo o espaço vazio e empurrar o rodapé para baixo. */
+.main-content {
+  flex-grow: 1;
+}
+
+/* --- 2. Estilos do Cabeçalho e Rodapé --- */
+
+.app-header {
+  flex-shrink: 0; /* Impede que o header encolha */
+  background-color: #0d47a1; /* Um azul escuro (ajuste conforme sua preferência) */
+  color: white;
+  padding: 2rem 2.5rem;
+  text-align: center;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-title {
+  margin: 0;
+  font-size: 2.5rem; /* 40px */
+}
+
+.app-subtitle {
+  margin: 0;
+  font-size: 1.125rem; /* 18px */
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.app-footer {
+  flex-shrink: 0; /* Impede que o rodapé encolha */
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 2rem; /* Espaço acima do rodapé */
+  border-top: 1px solid #e0e0e0;
+}
+
+/* --- 3. Estilos dos Componentes (Cards e Listas) --- */
+
+/* O estilo "card" branco para cada <Section> */
+.section-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 2.5rem;
+  margin: 2rem 0; /* Espaço entre os cards */
+}
+
+.section-container:first-child {
+  margin-top: 2rem;
+}
+
+.section-title {
+  font-size: 1.75rem; /* 28px */
+  color: #0d47a1; /* Azul do header */
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #f0f2f5; /* Borda cinza claro */
+  padding-bottom: 0.5rem;
+}
+
+/* Estilos de parágrafo e listas */
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+strong {
+  color: #111;
+}
+
+code {
+  background-color: #eee;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.list-disc-style, .list-decimal-style {
+  padding-left: 25px;
+  margin-bottom: 1rem;
+}
+.list-disc-style li, .list-decimal-style li {
+  margin-bottom: 0.5rem;
+}
+
+/* Garante que os itens da lista de referências sejam visíveis */
+.list-disc-style li {
+  color: #333; /* Cor de texto escura */
+  font-size: 1rem; /* Tamanho de fonte padrão */
+  margin-bottom: 0.75rem; /* Espaçamento entre os itens */
+}
+
+.list-none-style {
+  list-style-type: none;
+  padding-left: 10px;
+  margin-top: 0.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  color: #555;
+}
+.list-none-style li {
+  margin-bottom: 0.25rem;
+}
+
+/* --- 4. Estilos do Simulador --- */
+
+.simulator-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Duas colunas */
+  gap: 2.5rem;
+}
+
+.simulator-subtitle {
+  font-size: 1.25rem; /* 20px */
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.push-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.number-input {
+  flex-grow: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.op-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+/* Estilo base dos botões */
+.btn {
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Cores dos botões */
+.btn-push {
+  background-color: #007bff; /* Azul primário */
+  color: white;
+}
+.btn-push:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.btn-op {
+  background-color: #ffc107; /* Amarelo */
+  color: #333;
+}
+.btn-op:hover:not(:disabled) {
+  background-color: #e0a800;
+}
+
+.btn-util {
+  background-color: #6c757d; /* Cinza */
+  color: white;
+}
+.btn-util:hover:not(:disabled) {
+  background-color: #5a6268;
+}
+
+.btn-clear {
+  background-color: #dc3545; /* Vermelho */
+  color: white;
+}
+.btn-clear:hover:not(:disabled) {
+  background-color: #c82333;
+}
+
+/* --- 5. Estilos do Log e Visualizador da Pilha --- */
+
+.log-display {
+  background-color: #2b2b2b;
+  color: #f0f0f0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  padding: 1rem;
+  border-radius: 4px;
+  height: 200px;
+  overflow-y: auto; /* Adiciona scroll se o log for grande */
+  margin-top: 1rem;
+  border: 1px solid #444;
+}
+
+.log-display p {
+  margin: 0 0 0.3rem 0;
+  text-indent: -1.5em; /* Cria o efeito de '>' */
+  margin-left: 1.5em;
+  color: #f0f0f0;
+}
+
+.log-error {
+  color: #ff6b6b !important; /* Vermelho claro para erros */
+  font-weight: bold;
+}
+
+.stack-visualizer {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  min-height: 400px; /* Altura mínima para o visualizador */
+  display: flex;
+  flex-direction: column; /* Itens da pilha crescem para cima */
+  align-items: center;
+  background-color: #fafafa;
+}
+
+.stack-empty {
+  color: #999;
+  margin: auto; /* Centraliza verticalmente e horizontalmente */
+  font-style: italic;
+}
+
+.stack-item {
+  background-color: #e9f5ff;
+  border: 1px solid #b3d7ff;
+  color: #003366;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  width: 80%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.stack-top-label {
+  position: absolute;
+  right: -50px; /* Posição da tag 'TOP' */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #28a745; /* Verde */
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+/* --- 6. Responsividade (Mobile) --- */
+
+@media (max-width: 900px) {
+  .simulator-grid {
+    grid-template-columns: 1fr; /* Coloca as colunas do simulador uma sobre a outra */
+  }
+  
+  .stack-visualizer {
+    margin-top: 2rem;
+    min-height: 250px;
+  }
+
+  .stack-top-label {
+    right: 10px; /* Move a tag 'TOP' para dentro em telas menores */
+    top: -10px;
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header {
+    padding: 1.5rem;
+    border-radius: 0;
+  }
+  .app-title {
+    font-size: 2rem;
+  }
+  .app-subtitle {
+    font-size: 1rem;
+  }
+  
+  .section-container {
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 0;
+  }
+}
