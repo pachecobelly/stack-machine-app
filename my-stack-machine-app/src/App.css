@@ -98,11 +98,11 @@ html, body, #root {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
-  color: #333;
+  color: #333 !important;
 }
 
 strong {
-  color: #111;
+  color: #111 !important;
 }
 
 code {
@@ -118,11 +118,12 @@ code {
 }
 .list-disc-style li, .list-decimal-style li {
   margin-bottom: 0.5rem;
+  color: #333 !important;
 }
 
 /* Garante que os itens da lista de referências sejam visíveis */
 .list-disc-style li {
-  color: #333; /* Cor de texto escura */
+  color: #333 !important; /* Cor de texto escura */
   font-size: 1rem; /* Tamanho de fonte padrão */
   margin-bottom: 0.75rem; /* Espaçamento entre os itens */
 }
@@ -132,10 +133,11 @@ code {
   padding-left: 10px;
   margin-top: 0.5rem;
   font-family: 'Courier New', Courier, monospace;
-  color: #555;
+  color: #555 !important;
 }
 .list-none-style li {
   margin-bottom: 0.25rem;
+  color: #555 !important;
 }
 
 /* --- 4. Estilos do Simulador --- */
@@ -148,7 +150,7 @@ code {
 
 .simulator-subtitle {
   font-size: 1.25rem; /* 20px */
-  color: #333;
+  color: #333 !important;
   margin-top: 0;
   margin-bottom: 1rem;
 }
