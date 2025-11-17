@@ -293,17 +293,14 @@ export default function App() {
               <li>
                 Aho, A. V., Lam, M. S., Sethi, R., & Ullman, J. D. (2007). 
                 <em> Compilers: Principles, Techniques, & Tools</em> (2ª ed.). Addison-Wesley. 
-                (O "Livro do Dragão", referência clássica da área).
               </li>
               <li>
                 Lindholm, T., Yellin, F., Bracha, G., & Buckley, A. (2015). 
                 <em> The Java® Virtual Machine Specification, Java SE 8 Edition</em>. Oracle America, Inc.
-                (Descreve a implementação de uma máquina de pilha real e complexa).
               </li>
               <li>
                 Tanenbaum, A. S., & Bos, H. (2015). 
-                <em> Modern Operating Systems</em> (4ª ed.). Pearson. 
-                (Capítulos sobre máquinas virtuais frequentemente discutem a JVM como um exemplo de VM de nível de linguagem).
+                <em> Modern Operating Systems</em> (4ª ed.). Pearson.
               </li>
             </ul>
           </Section>
