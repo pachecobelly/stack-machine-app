@@ -187,13 +187,66 @@ export default function App() {
             </ul>
           </Section>
 
+          {/* --- Armazenamento em RPN --- */}
+          <Section title="Armazenamento em Notação Polonesa Reversa (RPN)">
+            <p>
+              Uma das características mais importantes das máquinas de pilha é o uso da <strong>Notação Polonesa Reversa (RPN)</strong> para representar e avaliar expressões matemáticas. Na RPN, os operadores aparecem <em>após</em> seus operandos, eliminando a necessidade de parênteses e facilitando a avaliação sequencial usando uma pilha.
+            </p>
+            
+            <h3 className="simulator-subtitle">Conversão de Notação Infixa para RPN</h3>
+            <p>
+              Expressões matemáticas tradicionais (notação infixa) precisam ser convertidas para RPN antes de serem processadas por uma máquina de pilha:
+            </p>
+            <ul className="list-disc-style">
+              <li><strong>Infixa:</strong> <code>5 + 3</code> → <strong>RPN:</strong> <code>5 3 +</code></li>
+              <li><strong>Infixa:</strong> <code>(5 + 3) * 2</code> → <strong>RPN:</strong> <code>5 3 + 2 *</code></li>
+              <li><strong>Infixa:</strong> <code>10 - 4 / 2</code> → <strong>RPN:</strong> <code>10 4 2 / -</code></li>
+              <li><strong>Infixa:</strong> <code>((5 + 3) * 2) - 1</code> → <strong>RPN:</strong> <code>5 3 + 2 * 1 -</code></li>
+            </ul>
+
+            <h3 className="simulator-subtitle">Vantagens da RPN para Máquinas de Pilha</h3>
+            <ul className="list-disc-style">
+              <li>
+                <strong>Avaliação Linear:</strong> A expressão pode ser lida da esquerda para a direita, sem necessidade de backtracking ou análise de precedência durante a execução.
+              </li>
+              <li>
+                <strong>Uso Eficiente da Pilha:</strong> Operandos são empilhados conforme encontrados, e operadores consomem exatamente os operandos necessários do topo da pilha.
+              </li>
+              <li>
+                <strong>Sem Ambiguidade:</strong> Não há necessidade de parênteses, pois a ordem de avaliação é determinada pela posição dos operadores.
+              </li>
+              <li>
+                <strong>Implementação Simples:</strong> O algoritmo de avaliação é direto: empilhe números, desempilhe e opere quando encontrar um operador.
+              </li>
+            </ul>
+
+            <h3 className="simulator-subtitle">Processo de Avaliação RPN</h3>
+            <p>
+              O algoritmo para avaliar uma expressão RPN é simples e elegante:
+            </p>
+            <ol className="list-decimal-style">
+              <li>Leia o próximo token da expressão RPN.</li>
+              <li>Se for um número, faça <code>PUSH</code> na pilha.</li>
+              <li>Se for um operador:
+                <ul className="list-none-style">
+                  <li>• Faça <code>POP</code> do operando direito</li>
+                  <li>• Faça <code>POP</code> do operando esquerdo</li>
+                  <li>• Execute a operação: esquerdo ⊕ direito</li>
+                  <li>• Faça <code>PUSH</code> do resultado</li>
+                </ul>
+              </li>
+              <li>Repita até que todos os tokens sejam processados.</li>
+              <li>O resultado final é o único valor que resta na pilha.</li>
+            </ol>
+          </Section>
+
           {/* --- Exemplo de Operação (Simulador) --- */}
           <Section title="Exemplo de Operação: Calculadora de Pilha">
             <p>
-              Abaixo está um simulador simples de uma máquina de pilha. Ele permite executar operações básicas para entender o fluxo.
+              Abaixo está um simulador simples de uma máquina de pilha. Ele permite executar operações básicas para entender o fluxo de avaliação de expressões RPN.
             </p>
             <p>
-              Por exemplo, para calcular a expressão <strong>(5 + 3) * 2</strong>, você faria:
+              Por exemplo, para calcular a expressão <strong>(5 + 3) * 2</strong> (Notação Polonesa Reversa: <code>5 3 + 2 *</code>), você faria:
             </p>
             <ol className="list-decimal-style">
               <li>Digite <code>5</code> e clique em <strong>PUSH</strong>.</li>
